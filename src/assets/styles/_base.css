@@ -1,0 +1,13 @@
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  /* vh dvh 쓰면 사파리 모바일에서 이슈생김 */
+  html,
+  body,
+  #app {
+    height: 100%;
+    color: var(--color-text-title);
+  }
+}

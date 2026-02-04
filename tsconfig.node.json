@@ -1,0 +1,36 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "nightwatch.conf.*",
+    "playwright.config.*",
+    "eslint.config.*"
+  ],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "target": "esnext",
+    "module": "esnext",
+    // "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
+    // "module": "ESNext",
+    "moduleResolution": "Bundler"
+    // "types": ["node"]
+  }
+}

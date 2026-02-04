@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+
+/* 
+@source inline
+Tailwind v4 엔진에게 주는 특별 지시서
+@source inline: "이 규칙대로 클래스들을 미리 한꺼번에 생성해라"라는 명령어.
+Tailwind CSS 같은 유틸리티 퍼스트 프레임워크의 클래스를 동적으로 생성하거나 관리하기 위한 정의 문구(Schema)
+주로 디자인 시스템을 구축하거나, 특정 클래스들을 한꺼번에 등록(Safelist)할 때 사용하는 약속된 규칙
+
+Tailwind 이미 만들어져있지만, 다시 만드는 이유는 Tailwind의 JIT(Just-In-Time) 엔진'이라는 녀석의 작동 방식 때문.
+Tailwind는 "필요한 것만" 만듭니다
+"동적 클래스"는 Tailwind가 못 읽습니다.
+<div :class="`m-${size}`"></div>
+이때 Tailwind 엔진은 코드를 훑다가 `m-${size}`라는 글자를 보고 "어? m-1인지 m-5인지 모르겠네? 그냥 아무것도 안 만들어야지" 하고 넘어가 버립니다.
+*/
+@source inline("{gap-,gap-x-,gap-y-,m-,mt-,mb-,ml-,mr-,mx-,my-,p-,pt-,pb-,pl-,pr-,px-,py-,top-,left-,right-,bottom-,}{0,{1..10..1}}");
+@source inline("{text-,bg-,border-,outline-,}{white,black,base-{100,200,300,content},primary{,-content,-light,-dark},secondary-content,accent{,-content},neutral{,-content},info{,-content},success{,-content},warning{,-content},error{,-content},gray-{50},gray-{100..900..100},gray-{950},mint-{50},mint-{100..900..100},mint-{950},dark-100-{5,10,15,30,50,75,80},light-100-{50,60},border-{1,2,3,4,5}}");
+@source inline("{rounded-}{t-,b-,r-,l-}{none,sm,md,lg,xl,2xl,full}");
+@source inline("{w-,h-,}{1..98..1}");
+@source inline("{btn-,select-,radio-,badge-,chip-,checkbox-,input-,}{{primary,secondary,accent,neutral,error,success,warning},{xs,sm,md,lg,xl,2xl}}");
+
+
+/*
+layer
+쉽게 비유하자면, 여러 겹의 투명한 종이(레이어)를 쌓아서 **어떤 스타일을 우선적으로 적용할지 순서를 정하는 '계급장'**이라고 이해하시면 됩니다.
+과거에는 CSS 우선순위를 결정할 때 선택자의 복잡도(점수)나 코드의 순서가 중요했습니다. 하지만 프로젝트가 커지면 !important를 남발하게 되는 문제가 생겼죠. layer는 이를 해결하기 위해 등장했습니다.
+명시적 우선순위: 파일의 위치나 선택자의 점수와 상관없이, 레이어의 선언 순서에 따라 우선순위가 결정됩니다.
+나중에 선언된 레이어가 승리: 같은 레이어 안에서는 기존 방식대로 점수를 따지지만, 레이어끼리는 나중에 정의된 레이어의 스타일이 이전 레이어를 덮어씁니다.
+*/
+@import './_fonts.css' layer(fonts);
+@import './_base.css' layer(base);
+@import './_utilities.css' layer(utilities);
+
+@plugin "daisyui/theme" {
+  name: 'garden';
+  default: true;
+  prefersdark: false;
+  color-scheme: 'light';
+  --color-base-100: #fff;
+  --color-base-200: #f5f6f7;
+  --color-base-300: #ededed;
+  --color-base-content: #000;
+  --color-primary: #5ddbdb;
+  --color-primary-content: #000;
+  --color-secondary: #000046;
+  --color-secondary-content: #fff;
+  --color-accent: #ff2860;
+  --color-accent-content: #fff;
+  --color-neutral: #1f1f1f;
+  --color-neutral-content: #fff;
+  --color-info: #2a7eff;
+  --color-info-content: #fff;
+  --color-success: #00ba7b;
+  --color-success-content: #000;
+  --color-warning: #ffbf0f;
+  --color-warning-content: #000;
+  --color-error: #f33d48;
+  --color-error-content: #000;
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  /* color */
+  --color-white: #fff;
+  --color-gray-50: #f5f6f7;
+  --color-gray-100: #ededed;
+  --color-gray-200: #dedede;
+  --color-gray-300: #c5c5c5;
+  --color-gray-400: #b5b5b5;
+  --color-gray-500: #949494;
+  --color-gray-600: #777;
+  --color-gray-700: #616161;
+  --color-gray-800: #555;
+  --color-gray-900: #3f3f3f;
+  --color-gray-950: #1f1f1f;
+  --color-black: #000;
+  --color-mint-50: #effbfb;
+  --color-mint-100: #def8f8;
+  --color-mint-200: #bcf0f0;
+  --color-mint-300: #9feaea;
+  --color-mint-400: #7ee2e2;
+  --color-mint-500: #5ddbdb;
+  --color-mint-600: #2dcccc;
+  --color-mint-700: #229a9a;
+  --color-mint-800: #166464;
+  --color-mint-900: #0b3232;
+  --color-mint-950: #061919;
+  --color-dark-100-5: #0000000d;
+  --color-dark-100-10: #0000001a;
+  --color-dark-100-15: #00000026;
+  --color-dark-100-30: #0000004d;
+  --color-dark-100-50: #00000080;
+  --color-dark-100-75: #000000bf;
+  --color-dark-100-80: #000c;
+  --color-light-100-60: #fff9;
+  --color-light-100-50: #ffffff80;
+
+  /*  */
+  --color-text-primary: var(--color-mint-700);
+  --color-text-secondary: var(--color-secondary);
+  --color-text-title: var(--color-base-content);
+  --color-text-body-1: var(--color-gray-700);
+  --color-text-body-2: var(--color-gray-600);
+  --color-text-body-3: var(--color-gray-500);
+  --color-text-body-4: var(--color-gray-400);
+  --color-text-white: var(--color-base-100);
+  /*  */
+  --color-btn-primary: var(--color-primary);
+  --color-btn-primary-content: var(--color-primary-content);
+  --color-btn-secondary: var(--color-neutral);
+  --color-btn-secondary-content: var(--color-secondary-content);
+  --color-btn-neutral: var(--color-base-300);
+  --color-btn-neutral-content: var(--color-base-content);
+
+  /*  */
+  --color-border-1: var(--color-base-200);
+  --color-border-2: var(--color-base-300);
+  --color-border-3: var(--color-gray-200);
+  --color-border-4: var(--color-gray-300);
+  --color-border-5: var(--color-neutral);
+  /*  */
+  --dim-bg: var(--dark-100-50);
+  --dim-toast: var(--dark-100-75);
+  /*  */
+  --text-xxs: 12px;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-smd: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+
+  /*  */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+  --spacing-1: 2px;
+  --spacing-2: 4px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-6: 20px;
+  --spacing-7: 24px;
+  --spacing-8: 32px;
+  --spacing-9: 40px;
+  --spacing-10: 48px;
+  --spacing-11: 60px;
+
+  /*  */
+
+  --shadow-xs: 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0px 5px 5px 0px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0px var(--y-10, 10px) 24px 0px rgba(0, 0, 0, 0.08);
+}
