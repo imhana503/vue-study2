@@ -2,17 +2,17 @@
 @font-face {
   font-family: 'Noto Sans KR';
   font-weight: 400;
-  src: url('./fonts/noto-sans-kr-v36-korean-regular.woff2') format('woff2');
+  src: url('./fonts/noto-sans-regular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Noto Sans KR';
   font-weight: 500;
-  src: url('./fonts/noto-sans-kr-v36-korean-500.woff2') format('woff2');
+  src: url('./fonts/noto-sans-500.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Noto Sans KR';
   font-weight: 700;
-  src: url('./fonts/noto-sans-kr-v36-korean-700.woff2') format('woff2');
+  src: url('./fonts/noto-sans-700.woff2') format('woff2');
 }
 
 

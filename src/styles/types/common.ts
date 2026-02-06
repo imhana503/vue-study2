@@ -1,0 +1,13 @@
+export type ComponentSizes = 'sm' | 'md' | 'lg'
+export type PlacementType = 'left' | 'right' | 'top' | 'bottom'
+export type ComponentSizes = 'sm' | 'md' | 'lg'
+export type ComponentTypes =
+  | 'primary'
+  | 'secondary'
+  | 'accent'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'neutral'
+  | 'ghost'

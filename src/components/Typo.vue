@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="computedClass">
+  <component :is="as" :class="computedClass">
     <slot/>
   </component>
   
@@ -35,7 +35,7 @@ const BULLET_MAP = {
  *Props 정의
 */
 interface Props {
-  tag?: keyof HTMLElementTagNameMap;
+  as?: keyof HTMLElementTagNameMap;
   underline?: boolean;
   centerline?: boolean;
   ellipsis?: boolean;
@@ -49,7 +49,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  tag: 'p',
+  as: 'p',
   underline: false,
   centerline: false,
   ellipsis: false,
